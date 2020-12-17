@@ -57,14 +57,15 @@
 80~83. 対象とキーが一致していない場合はposを初期化しループを抜ける
 86. 前のindexを保存
 87. indexを違った文字に対応した値分ずらす
-88~90. indexが前に戻っていたら、前のindexに1足したものをindexにする
-93. NULLを返す
+88~90. indexが同じか前に戻っていたら、前のindexに1足したものをindexにする
+1.  NULLを返す
 
 
 ## 出力結果
 
 ```
-
+Force Search. Find keyword at:wind in my hair.
+BM Search. Find keyword at:wind in my hair.
 ```
 
 ## 修正履歴

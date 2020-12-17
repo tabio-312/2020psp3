@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 #define DEBUG
 
 #define ALPHABET_LEN    255
