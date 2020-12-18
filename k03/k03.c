@@ -67,9 +67,9 @@ while(n<keylen)
 
 while(index < textlen)
 {
+    index_before=index;
     while(pos >= 0)
     {
-        index_before=index;
         if(text[index] == key[pos])
         {
             if(pos == 0)
