@@ -53,7 +53,7 @@ index = strlen(key)-1;
 keylen = strlen(key);
 pos = keylen - 1;
 textlen = strlen(text);
-while(n <= ALPHABET_LEN)
+while(n < ALPHABET_LEN)
 {
     table[n] = keylen;
     n++;
@@ -65,10 +65,11 @@ while(n<keylen)
     n++;
 }
 
-while(index <= textlen)
+while(index < textlen)
 {
     while(pos >= 0)
     {
+        index_before=index;
         if(text[index] == key[pos])
         {
             if(pos == 0)
@@ -83,7 +84,6 @@ while(index <= textlen)
             break;
         }
     }
-    index_before=index;
     index = index + table[(int)text[index]];
     if(index_before >= index)
     {
