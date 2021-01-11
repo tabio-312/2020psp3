@@ -112,13 +112,13 @@ if(left < right){
     j = right;
     pivot = arrayCity[left];
     while(1){
-        while(i < right){
+        while(i <= right){
             if(arrayCity[i].seafood > pivot.seafood){
                 break;
             }
             i++;
         }
-        while(j > left){
+        while(j >= left){
             if(arrayCity[j].seafood <= pivot.seafood){
                 break;
             }
