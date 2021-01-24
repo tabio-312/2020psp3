@@ -106,7 +106,34 @@ int StackIsEmpty(void)
 void DepthFirstSearch(int size, int matrix[size][size], int start)
 {
     //  ここを実装する
+int visited[size];
+int i, j, val;
+int count = 0;
 
+for(i=0; i<size; i++){
+    visited[i] = 0;
+}
+
+StackInit();
+StackPush(start);
+printf("深さ優先で到達した駅\n");
+
+while(StackIsEmpty() == FALSE){
+    val = StackPop();
+    if(visited[val] == 0){
+        visited[val] = 1;
+        PrintStationName(val);
+        count += 1;
+        for(j=0; j<size; j++){
+            if(matrix[val][j] != 0){
+                StackPush(j);
+            }
+        }
+    }
+}
+if(count == size){
+    printf("深さ優先探索ですべての駅に到達可能\n");
+}
 }
 
 
@@ -172,29 +199,46 @@ int QueueIsEmpty()
 void BreadthFirstSearch(int size, int matrix[size][size], int start)
 {
     //  ここを実装する
+int i, j, val;
+int visited[size];
+int count = 0;
 
+for(i=0; i<size; i++){
+    visited[i] = 0;
+}
+
+InitQueue();
+EnQueue(start);
+printf("幅優先探索で到達した駅\n");
+
+while(QueueIsEmpty() == FALSE){
+    val = DeQueue();
+    if(visited[val] == 0){
+        visited[val] = 1;
+        PrintStationName(val);
+        count += 1;
+        for(j=0; j<size; j++){
+            if(matrix[val][j] != 0){
+                EnQueue(j);
+            }
+        }
+    }
+}
+if(count == size){
+    printf("幅優先探索ですべての駅に到達可能\n");
+}
 }
 
 
-#define INF_COST    9999
-
-int SearchGraphByDijkstra(int start, int goal, int size, int matrix[size][size])
-{
-    //  ここを実装する
-
-}
 
 
 
 int main(void)
 {
-    int cost;
 
     DepthFirstSearch(MAX_STATIONS, AdjacencyMatrix, 0);
     BreadthFirstSearch(MAX_STATIONS, AdjacencyMatrix, 0);
 
-    cost = SearchGraphByDijkstra(0, 7, MAX_STATIONS, AdjacencyMatrix);
-    printf("Time Required: %d\n", cost);
 
     return 0;
 }
